@@ -1,0 +1,21 @@
+version: '3.1'
+
+services:
+  python:
+    build: ./
+    command: python3 ./DockerPy/PythonApp.py
+
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: lorozco
+      POSTGRES_PASSWORD: 20198854
+      POSTGRES_DB: devops
+      
+   adminer:
+    image: adminer
+    restart: always
+    depends_on:
+      - database
+    ports:
+      - 8080:8080
